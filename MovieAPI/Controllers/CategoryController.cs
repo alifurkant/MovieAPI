@@ -17,12 +17,12 @@ namespace MovieAPI.Controllers
         {
             this.categoryService = categoryService;
         }
-        [HttpGet]
+        [HttpGet("GetCategories")]
         public ActionResult GetCategories()
         {
-            return Ok(categoryService.GetAll());
+            return Ok(categoryService.GetCategoriesIncludedMovies());
         }
-        [HttpPost]
+        [HttpPost("CreateCategory")]
         public ActionResult CreateCategory(string categoryName)
         {
             Category category = new()
@@ -31,7 +31,7 @@ namespace MovieAPI.Controllers
             };
             return Ok(categoryService.Add(category));
         }
-        [HttpPut]
+        [HttpPut("UpdateCategory")]
         public ActionResult UpdateCategory(string categoryName) 
         {
             Category category = new()
@@ -40,12 +40,12 @@ namespace MovieAPI.Controllers
             };
             return Ok(categoryService.Update(category));
         }
-        [HttpDelete]
+        [HttpDelete("DeleteCategory")]
         public ActionResult DeleteCategory(int id)
         {
             return Ok(categoryService.Delete(id));
         }
-        [HttpGet("Id")]
+        [HttpGet("GetById")]
         public ActionResult GetCategoryById(int id)
         {
             return Ok(categoryService.GetById(id));

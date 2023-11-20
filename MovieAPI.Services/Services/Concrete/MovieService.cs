@@ -19,5 +19,16 @@ namespace MovieAPI.BLL.Services.Concrete
             this.baseRepository = baseRepository;
             this.movieRepository = movieRepository;
         }
+
+        public bool AddActorToMovie(int actorId, int MovieId)
+        {
+            return movieRepository.AddActorToMovie(actorId, MovieId);
+        }
+
+        public List<Movie> GetMoviesIncludedActorsCategories()
+        {
+            return movieRepository.GetMoviesIncludedActorsCategories();
+        }
+
     }
 }

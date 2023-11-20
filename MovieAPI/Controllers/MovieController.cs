@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MovieAPI.BLL.Models.DTOs;
 using MovieAPI.BLL.Models.DTOs.MovieDTOs;
 using MovieAPI.BLL.Services.Abstract;
 using MovieAPI.Models.Entities;
@@ -16,12 +17,12 @@ namespace MovieAPI.Controllers
         {
             this.movieService = movieService;
         }
-        [HttpGet]
+        [HttpGet("GetMovies")]
         public ActionResult GetMovies()
         {
-            return Ok(movieService.GetAll());
+            return Ok(movieService.GetMoviesIncludedActorsCategories());
         }
-        [HttpPost]
+        [HttpPost("CreateMovie")]
         public ActionResult CreateMovie(CreateMovieDTO movieDTO)
         {
             Movie movie = new()
@@ -32,7 +33,7 @@ namespace MovieAPI.Controllers
             };
             return Ok(movieService.Add(movie));
         }
-        [HttpPut]
+        [HttpPut("UpdateMovie")]
         public ActionResult UpdateMovie(UpdateMovieDTO movieDTO)
         {
             Movie movie = new()
@@ -44,15 +45,20 @@ namespace MovieAPI.Controllers
             };
             return Ok(movieService.Update(movie));
         }
-        [HttpDelete]
+        [HttpDelete("DeleteMovie")]
         public ActionResult DeleteMovie(int id)
         {
             return Ok(movieService.Delete(id));
         }
-        [HttpGet("Id")]
+        [HttpGet("GetById")]
         public ActionResult GetMovieById(int id)
         {
             return Ok(movieService.GetById(id));
+        }
+        [HttpPost("AddActorToMovie")]
+        public ActionResult AddActorToMovie(AddActorToMovieDTO addActorToMovieDTO)
+        {
+            return Ok(movieService.AddActorToMovie(addActorToMovieDTO.ActorId, addActorToMovieDTO.MovieId));
         }
     }
 }

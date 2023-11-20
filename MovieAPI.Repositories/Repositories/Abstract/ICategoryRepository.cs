@@ -9,5 +9,6 @@ namespace MovieAPI.DAL.Repositories.Abstract
 {
     public interface ICategoryRepository : IBaseRepository<Category>
     {
+        List<Category> GetCategoriesIncludedMovies();
     }
 }

@@ -13,7 +13,6 @@ namespace MovieAPI.BLL.Services.Abstract
         T GetById(int id);
         T GetWhere(Expression<Func<T, bool>> exp);
         List<T> GetWhereAll(Expression<Func<T, bool>> exp);
-        List<T> GetIncluded(Expression<Func<T, bool>> exp);
         bool Add(T entity);
         bool Update(T entity);
         bool Delete(int id);

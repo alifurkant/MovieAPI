@@ -33,6 +33,9 @@ namespace MovieAPI
             builder.Services.AddTransient(typeof(IActorService), typeof(ActorService));
             builder.Services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
 
+            builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler =
+                    System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

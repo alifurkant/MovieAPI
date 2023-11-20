@@ -56,10 +56,7 @@ namespace MovieAPI.DAL.Repositories.Concrete
             return context.Set<T>().Where(exp).ToList();
         }
 
-        public List<T> GetIncluded(Expression<Func<T, bool>> exp)
-        {
-            return context.Set<T>().Include(exp).ToList();
-        }
+
 
         public int Save()
         {

@@ -1,4 +1,5 @@
-﻿using MovieAPI.DAL.Repositories.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieAPI.DAL.Repositories.Abstract;
 using MovieAPI.Entities.Context;
 using MovieAPI.Models.Entities;
 using System;
@@ -16,6 +17,11 @@ namespace MovieAPI.DAL.Repositories.Concrete
         public CategoryRepository(AppDbContext context) : base(context)
         {
             this.context = context;
+        }
+
+        public List<Category> GetCategoriesIncludedMovies()
+        {
+            return context.Categories.Include(c => c.Movies).ToList();
         }
     }
 }

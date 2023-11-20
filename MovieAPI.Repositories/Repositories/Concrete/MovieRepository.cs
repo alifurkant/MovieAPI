@@ -1,4 +1,5 @@
-﻿using MovieAPI.DAL.Repositories.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieAPI.DAL.Repositories.Abstract;
 using MovieAPI.Entities.Context;
 using MovieAPI.Models.Entities;
 using System;
@@ -17,5 +18,21 @@ namespace MovieAPI.DAL.Repositories.Concrete
             this.context = context;
         }
 
+        public bool AddActorToMovie(int actorId, int MovieId)
+        {
+            Movie movie = context.Movies.FirstOrDefault(x => x.Id == MovieId);
+            Actor actor = context.Actors.FirstOrDefault(x => x.Id == actorId);
+            if (movie != null && actor != null)
+            {
+                movie.Actors.Add(actor);
+            }
+
+            return context.SaveChanges() > 0;
+        }
+
+        public List<Movie> GetMoviesIncludedActorsCategories()
+        {
+            return context.Movies.Include(x => x.Actors).Include(x=>x.Category).ToList();
+        }
     }
 }

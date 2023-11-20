@@ -40,11 +40,6 @@ namespace MovieAPI.BLL.Services.Concrete
             return baseRepository.GetById(id);
         }
 
-        public List<T> GetIncluded(Expression<Func<T, bool>> exp)
-        {
-            return baseRepository.GetIncluded(exp);
-        }
-
         public T GetWhere(Expression<Func<T, bool>> exp)
         {
             return baseRepository.GetWhere(exp);

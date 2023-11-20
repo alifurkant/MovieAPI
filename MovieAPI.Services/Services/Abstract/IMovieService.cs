@@ -9,5 +9,7 @@ namespace MovieAPI.BLL.Services.Abstract
 {
     public interface IMovieService : IBaseService<Movie>
     {
+        List<Movie> GetMoviesIncludedActorsCategories();
+        bool AddActorToMovie(int actorId, int MovieId);
     }
 }

@@ -9,6 +9,7 @@ namespace MovieAPI.DAL.Repositories.Abstract
 {
     public interface IMovieRepository : IBaseRepository<Movie>
     {
-
+        List<Movie> GetMoviesIncludedActorsCategories();
+        bool AddActorToMovie(int actorId,int MovieId);
     }
 }

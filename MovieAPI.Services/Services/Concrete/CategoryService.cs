@@ -19,5 +19,10 @@ namespace MovieAPI.BLL.Services.Concrete
             this.baseRepository = baseRepository;
             this.categoryRepository = categoryRepository;
         }
+
+        public List<Category> GetCategoriesIncludedMovies()
+        {
+            return categoryRepository.GetCategoriesIncludedMovies();
+        }
     }
 }

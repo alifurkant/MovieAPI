@@ -9,5 +9,6 @@ namespace MovieAPI.BLL.Services.Abstract
 {
     public interface ICategoryService : IBaseService<Category>
     {
+        List<Category> GetCategoriesIncludedMovies();
     }
 }

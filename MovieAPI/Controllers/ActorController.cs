@@ -16,12 +16,12 @@ namespace MovieAPI.Controllers
         {
             this.actorService = actorService;
         }
-        [HttpGet]
+        [HttpGet("GetActors")]
         public ActionResult GetActors()
         {
-            return Ok(actorService.GetAll());
+            return Ok(actorService.GetActorsIncludedMovies());
         }
-        [HttpPost]
+        [HttpPost("CreateActor")]
         public ActionResult CreateActor(CreateActorDTO actorDTO)
         {
             Actor actor = new()
@@ -31,7 +31,7 @@ namespace MovieAPI.Controllers
             };
             return Ok(actorService.Add(actor));
         }
-        [HttpPut]
+        [HttpPut("UpdateActor")]
         public ActionResult UpdateActor(UpdateActorDTO actorDTO)
         {
             Actor actor = new()
@@ -49,7 +49,7 @@ namespace MovieAPI.Controllers
                 return BadRequest();
             }
         }
-        [HttpDelete]
+        [HttpDelete("DeleteActor")]
         public ActionResult DeleteActor(int id)
         {
             if (actorService.Delete(id))
@@ -61,5 +61,6 @@ namespace MovieAPI.Controllers
                 return BadRequest();
             }
         }
+
     }
 }
