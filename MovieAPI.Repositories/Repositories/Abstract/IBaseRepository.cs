@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieAPI.Repositories.Abstract
+namespace MovieAPI.DAL.Repositories.Abstract
 {
-    public interface IBaseRepository <T> where T : BaseEntity
+    public interface IBaseRepository<T> where T : BaseEntity
     {
         List<T> GetAll();
         T GetById(int id);

@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieAPI.Repositories.Abstract
+namespace MovieAPI.DAL.Repositories.Abstract
 {
-    public interface IMovieRepository : IBaseRepository<Movie>
+    public interface IActorRepository : IBaseRepository<Actor>
     {
-        
     }
 }

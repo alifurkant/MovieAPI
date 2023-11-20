@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using MovieAPI.BLL.Services.Abstract;
 using MovieAPI.BLL.Services.Concrete;
+using MovieAPI.DAL.Repositories.Abstract;
+using MovieAPI.DAL.Repositories.Concrete;
 using MovieAPI.Entities.Context;
-using MovieAPI.Repositories.Abstract;
-using MovieAPI.Repositories.Concrete;
 
 namespace MovieAPI
 {

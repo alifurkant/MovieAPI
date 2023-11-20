@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieAPI.DAL.Repositories.Abstract;
 using MovieAPI.Entities.Context;
 using MovieAPI.Entities.Models.Entities;
-using MovieAPI.Repositories.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieAPI.Repositories.Concrete
+namespace MovieAPI.DAL.Repositories.Concrete
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
@@ -30,7 +30,7 @@ namespace MovieAPI.Repositories.Concrete
         public bool Delete(int id)
         {
             var entity = GetById(id);
-            entity.IsActive=false;
+            entity.IsActive = false;
             entity.DeletedDate = DateTime.Now;
             context.Set<T>().Update(entity);
             return Save() > 0;
@@ -43,7 +43,7 @@ namespace MovieAPI.Repositories.Concrete
 
         public T GetById(int id)
         {
-            return context.Set<T>().FirstOrDefault(context=>context.Id == id);
+            return context.Set<T>().FirstOrDefault(context => context.Id == id);
         }
 
         public T GetWhere(Expression<Func<T, bool>> exp)
@@ -68,7 +68,9 @@ namespace MovieAPI.Repositories.Concrete
 
         public bool Update(T entity)
         {
-            throw new NotImplementedException();
+            entity.UpdatedDate = DateTime.Now;
+            context.Set<T>().Update(entity);
+            return Save() > 0;
         }
     }
 }

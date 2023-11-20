@@ -1,6 +1,6 @@
 ﻿using MovieAPI.BLL.Services.Abstract;
+using MovieAPI.DAL.Repositories.Abstract;
 using MovieAPI.Entities.Models.Entities;
-using MovieAPI.Repositories.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
