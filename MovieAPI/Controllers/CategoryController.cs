@@ -50,5 +50,6 @@ namespace MovieAPI.Controllers
         {
             return Ok(categoryService.GetById(id));
         }
+
     }
 }
