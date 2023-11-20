@@ -38,7 +38,7 @@ namespace MovieAPI.DAL.Repositories.Concrete
 
         public List<T> GetAll()
         {
-            return context.Set<T>().ToList();
+            return context.Set<T>().Where(x=>x.IsActive==true).ToList();
         }
 
         public T GetById(int id)
